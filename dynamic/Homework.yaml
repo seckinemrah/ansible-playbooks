@@ -1,6 +1,6 @@
 ---
 - name: My First Task
-  hosts: us-west-2
+  hosts: all
   become: true
   become_method: sudo
   tasks: 
@@ -15,12 +15,8 @@
       name: telnet
       state: installed
 
-   - name: copy ssh key
-      authorized_key:
-        key: "{{ lookup('file', ssh_key) }}"
-        user: centos
    
-   - name: Add Bob
+  - name: Add Bob
     user: 
       name: user
       state: present
