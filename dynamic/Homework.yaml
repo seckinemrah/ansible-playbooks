@@ -1,6 +1,6 @@
 ---
 - name: My First Task
-  hosts: 18.237.186.94
+  hosts: us-west-2
   become: true
   become_method: sudo
   tasks: 
@@ -15,12 +15,12 @@
       name: telnet
       state: installed
 
-  - name: Run ssh-keygen
-    package: 
-      name : ssh-keygen
-      state: created
-
-  - name: Add Bob
+   - name: copy ssh key
+      authorized_key:
+        key: "{{ lookup('file', ssh_key) }}"
+        user: centos
+   
+   - name: Add Bob
     user: 
       name: user
       state: present
