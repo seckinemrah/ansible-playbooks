@@ -5,7 +5,7 @@
   become_method: sudo
   user: centos
   tasks: 
-  - name: Install package
-    shell: "sudo find /var/log -type f -name "*.log" -size +100M -exec gzip -v9 {} +"
+  - name: Run find command 
+    shell: 'sudo find /var/log -type f -name "*.log" -size +100M -exec gzip -v9 {} +''
   
   
