@@ -33,12 +33,12 @@
       enabled: false
 
   - name: Get Key
-     when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
      shell: "r1soft-setup --get-key http://35.178.118.126/"
 
 
   handlers: 
-    name: AGENT_RESTART
+  - name: AGENT_RESTART
     service:
       name: cdp-agent
       state: restarted
