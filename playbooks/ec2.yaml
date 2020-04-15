@@ -1,0 +1,15 @@
+--- 
+- name: Creates ec2 instance
+  hosts: localhost
+  become: true
+  become_method: sudo
+  tasks:
+    - name: Create instances
+      ec2:
+        key_name: ansible
+        instance_type: t2.medium
+        image: ami-01f09366d12241b56
+        count: 1
+        vpc_subnet_id: subnet-0327269f39ecaa5e1
+        region: us-west-2d
+        assign_public_ip: yes

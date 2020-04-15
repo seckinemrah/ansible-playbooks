@@ -1,0 +1,12 @@
+---
+- name: Create route53 entry
+  hosts: 54.189.189.133
+  tasks:
+    - name: Route53 a record
+      route53:
+        state: "present"
+        zone: "seckinemrah.com."
+        record: "wordpress.seckinemrah.com."
+        type: A
+        ttl: 7200
+        value: "54.189.189.133" #change Ip
