@@ -11,5 +11,5 @@
         image: ami-01f09366d12241b56
         count: 1
         vpc_subnet_id: subnet-0327269f39ecaa5e1
-        region: us-west-2d
+        region: us-west-2
         assign_public_ip: yes
