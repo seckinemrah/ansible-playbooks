@@ -7,7 +7,7 @@
     - name: Create instances
       ec2:
         key_name: ansible
-        instance_type: t2.medium
+        instance_type: t2.micro
         image: ami-01f09366d12241b56
         count: 1
         vpc_subnet_id: subnet-0327269f39ecaa5e1
