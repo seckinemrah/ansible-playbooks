@@ -12,7 +12,7 @@
        - epel-release
        - wget 
        - unzip
-       - mariadb-server
+       - mysql-server
       ignore_errors: true
 
     - name: Install epel-release
