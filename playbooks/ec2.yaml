@@ -8,8 +8,8 @@
       ec2:
         key_name: ansible
         instance_type: t2.micro
-        image: ami-01f09366d12241b56
+        image: ami-0323c3dd2da7fb37d 
         count: 1
-        vpc_subnet_id: subnet-0327269f39ecaa5e1
-        region: us-west-2d 
+        vpc_subnet_id: subnet-00e2676aab13f44e5
+        region: us-east-1
         assign_public_ip: yes
