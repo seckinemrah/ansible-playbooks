@@ -37,8 +37,8 @@
         dest: "/var/www/html"
         remote_src: yes
 
-    - name: Restart httpd
-      systemd:
+    - name: Restart apache
+      service:
         name: httpd
         state: restarted  
         enabled: yes
