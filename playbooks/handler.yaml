@@ -1,6 +1,6 @@
 ---
 - name: Handler
-  hosts: 54.189.189.133
+  hosts: 52.87.234.3
   become: true
   become_method: sudo
   connection: ssh
