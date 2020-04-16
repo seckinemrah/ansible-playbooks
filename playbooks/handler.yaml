@@ -21,7 +21,7 @@
       notify: HTTPD RESTART 
     - name: Install mysql
       package: 
-        name: mariadb-server
+        name: mysql-server
         state: present
       notify: MYSQL RESTART
   
