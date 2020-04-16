@@ -17,6 +17,8 @@
 
     - name: Install epel-release
       shell: "yum install http://rpms.remirepo.net/enterprise/remi-release-6.rpm -y"
+      args: 
+        creates: /etc/yum.repos.d/remi.repo
     
     - name: config manager enabled 
       shell: "yum-config-manager --enable remi-php72"
