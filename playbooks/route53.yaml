@@ -1,6 +1,6 @@
 ---
 - name: Create route53 entry
-  hosts: 52.87.234.3
+  hosts: localhost
   tasks:
     - name: Route53 a record
       route53:
