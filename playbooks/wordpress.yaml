@@ -15,14 +15,14 @@
        - mariadb-server
       ignore_errors: true
 
-  
     - name: Install epel-release
       shell: "sudo yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y"
+    
     - name: config manager enabled 
       shell: "sudo yum-config-manager --enable remi-php72"
+    
     - name : update httpd PHP 
       shell: "sudo yum install httpd php php-common php-opcache php-mcrypt php-cli php-gd php-curl php-mysql mysql -y" 
-
 
     - name: Download wordpress Package
       get_url:
@@ -34,13 +34,9 @@
         src: "/tmp/wordpress-5.2.1.tar.gz"    
         dest: "/var/www/html"
         remote_src: yes
-      become: yes
-      become_method: sudo
 
     - name: Move files to html folder
       shell: "mv /var/www/html/wordpress/* /var/www/html"
-      become: yes
-      become_method: sudo
       ignore_errors: yes
 
     - name: Restart httpd
@@ -48,5 +44,4 @@
         name: httpd
         state: restarted  
         enabled: yes
-      become: yes
-      become_method: sudo
+        
