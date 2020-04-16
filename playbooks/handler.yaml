@@ -3,8 +3,16 @@
   hosts: 52.87.234.3
   become: true
   become_method: sudo
-  connection: ssh
   ignore_errors: false
+  handlers:
+    - name: HTTPD RESTART
+      systemd: 
+        name: httpd 
+        state: restarted
+    - name: MYSQL RESTART
+      systemd: 
+        name: mysqld 
+        state: restarted
   tasks:
     - name: Handler tasks
       package: 
@@ -16,12 +24,4 @@
         name: mariadb-server
         state: present
       notify: MYSQL RESTART
-  handlers:
-    - name: HTTPD RESTART
-      systemd: 
-        name: httpd 
-        state: restarted
-    - name: MYSQL RESTART
-      systemd: 
-        name: mysqld 
-        state: restarted
+  
