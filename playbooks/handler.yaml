@@ -1,6 +1,6 @@
 ---
 - name: Handler
-  hosts: 52.87.234.3
+  hosts: 54.190.14.224
   become: true
   become_method: sudo
   ignore_errors: false
