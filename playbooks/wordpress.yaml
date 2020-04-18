@@ -12,11 +12,11 @@
        - epel-release
        - wget 
        - unzip
-       - mysql-server
+       - mariadb-server
       ignore_errors: true
 
     - name: Install epel-release
-      shell: "yum install http://rpms.remirepo.net/enterprise/remi-release-6.rpm -y"
+      shell: "yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y"
       args: 
         creates: /etc/yum.repos.d/remi.repo
     
