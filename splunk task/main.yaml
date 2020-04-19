@@ -1,0 +1,11 @@
+---
+- name: main.yaml
+  hosts: all
+  tasks: 
+- import_playbook: splunk-task.yaml
+- import_playbook: splunk-check.yaml
+- import_playbook: splunk-unzip.yaml
+- import_playbook: splunk-copy-forwarder.yaml
+- import_playbook: start-splunk-forwarder.yaml
+- import_playbook: deployment-server.yaml
+- import_playbook: restart-splunk.yaml
