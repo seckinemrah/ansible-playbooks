@@ -7,13 +7,3 @@
   when:
     - splunk_path_present.stat.exists == false
     - ansible_facts['distribution'] == "CentOS"
- 
-- name: Untar Splunk UF Package - Raspberry Pi
-  command: tar xzf {{splunk_working_directory}}{{splunk_uf_file_arm}} -C /opt
-  args:
-    warn: False
-  become: yes
-  become_method: sudo
-  when:
-    - splunk_path_present.stat.exists == false
-    - ansible_facts['distribution'] != "CentOS"

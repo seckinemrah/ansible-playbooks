@@ -1,0 +1,9 @@
+- name: Copy user-seed.conf to Forwarder Location
+  copy:
+    src: /etc/ansible/playbooks/Splunk_UF_Install/roles/common/files/user-seed.conf
+    dest: /opt/splunkforwarder/etc/system/local/
+    owner: team5  
+    group: team5
+    mode: 0777
+  become: yes
+  become_method: sudo

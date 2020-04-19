@@ -3,7 +3,7 @@
     src: /etc/ansible/playbooks/Splunk_UF_Install/roles/common/files/{{splunk_uf_file_centos}}
     dest: "{{splunk_working_directory}}"
     owner: team5
-    group: splunk
+    group: team5
     mode: 0777
   when:
     - splunk_installer_present.stat.exists == false

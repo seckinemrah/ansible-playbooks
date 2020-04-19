@@ -1,0 +1,14 @@
+- name: Set forward-server
+  command: /opt/splunkforwarder/bin/splunk add forward-server -auth admin:{{uf_user_password}} splunk.bussenet.com:9997
+  become: yes
+  become_method: sudo
+ 
+- name: Enable Boot Start
+  command: /opt/splunkforwarder/bin/splunk enable boot-start
+  become: yes
+  become_method: sudo
+ 
+- name: Restart Splunk forwarder
+  command: /opt/splunkforwarder/bin/splunk restart
+  become: yes
+  become_method: sudo
