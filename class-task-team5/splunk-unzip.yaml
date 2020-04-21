@@ -1,7 +1,6 @@
-- name: Untar Splunk UF Package - CentOS
-  command: tar xzf {{splunk_working_directory}}{{splunk_uf_file_centos}} -C /opt
-  args:
-    warn: False
+- name: Extract splunkforwarder-8.0.3-a6754d8441bf-Linux-x86_64.tgz into /opt/splunk
+    src: /etc/ansible/playbooks/Splunk_UF_Install/roles/common/files/splunkforwarder-8.0.3-a6754d8441bf-Linux-x86_64.tgz 
+    dest: /opt/splunk/
   become: yes
   become_method: sudo
   when:

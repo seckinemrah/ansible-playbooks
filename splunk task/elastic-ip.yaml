@@ -1,0 +1,8 @@
+- name: Associating after allocating elastic IP
+        eip:
+          in_vpc: yes
+          reuse_existing_ip_allowed: yes
+          state: present
+          region: "{{ region }}"
+          device_id: "{{ ec2.instance_id[0] }}"
+  register: elastic_ip

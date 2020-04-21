@@ -1,0 +1,61 @@
+---
+- hosts: "{{ hosts_prompt }}"
+  
+  vars_prompt:
+    - name: "hosts_prompt"
+      prompt: "hostname or host group need to run with Playbook"
+      private: no
+
+  tasks:
+
+    - name: Install Splunk Forwarder RPM package on remote servers. 
+      become: yes
+      become_method: sudo
+      yum: state=present name={{ item }}
+      with_items:
+            - wget -O splunkforwarder-8.0.3-a6754d8441bf-linux-2.6-x86_64.rpm 'https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=8.0.3&product=universalforwarder&filename=splunkforwarder-8.0.3-a6754d8441bf-linux-2.6-x86_64.rpm&wget=true'
+
+    - name: Untar Splunk UF Package - CentOS
+      command: tar xvzf splunkforwarder-8.0.3-a6754d8441bf-Linux-x86_64.tgz -C /opt
+      args:
+        warn: False
+      become: yes
+      become_method: sudo
+      when:
+        - splunk_path_present.stat.exists == false
+        - ansible_facts['distribution'] == "CentOS"
+
+    - name: Copy the Splunk Forwarder config from your centralized server to remote servers.
+      remote_user: splunk
+      become: yes
+      become_method: sudo
+      copy:
+        src: /root/splunk-8.0.3-a6754d8441bf-Linux-x86_64.tgz
+        dest: /opt/splunkforwarder/etc/system/
+        directory_mode: yes
+        owner: splunk
+        group: splunk
+        mode: 0600
+
+    - name: Start Splunk forwarder service.
+      remote_user: splunk
+      become: yes
+      become_method: sudo
+      become_user: splunk
+      shell:
+        /opt/splunkforwarder/bin/splunk start --accept-license --answer-yes
+
+    - name: Check Splunk forwarder service.
+      remote_user: splunk
+      become: yes
+      become_method: sudo
+      command:
+        /opt/splunkforwarder/bin/splunk status
+      register: service_splunk_status
+
+    - name: Report Splunk forwarder Status.
+      remote_user: splunk
+      become: yes
+      become_method: sudo
+      debug:
+         var: service_splunk_status.stdout_lines

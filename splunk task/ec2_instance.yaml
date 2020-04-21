@@ -1,0 +1,19 @@
+---
+- name : Launching an EC2 Instances
+- hosts: localhost
+  vars_files: 
+  - splunk-regions.yaml
+  tasks:
+  - name: Create instance
+    ec2:  
+      key_name:         "{{key_name}}"
+      instance_type:    "{{instance_type}}"
+      image:            "{{image}}"
+      group:            "{{group}}"
+      security:         "ansible_ssh_port"
+      count:            "{{count}}"
+      vpc_subnet_id:    "{{vpc_subnet_id}}"
+      assign_public_ip: "{{assign_public_ip}}"
+      region:           "{{region}}"
+      wait :            "{{60}}"
+  regidter: ec2

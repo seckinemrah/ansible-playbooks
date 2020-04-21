@@ -1,6 +1,6 @@
 ---
 - name: main.yaml
-  hosts: all
+  hosts: 18.132.5.165
   tasks:
 - import_playbook: wget-splunk-forwarder.yaml 
 - import_playbook: splunk-task.yaml
