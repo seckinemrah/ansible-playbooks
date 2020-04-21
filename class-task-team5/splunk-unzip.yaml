@@ -1,8 +1,0 @@
-- name: Extract splunkforwarder-8.0.3-a6754d8441bf-Linux-x86_64.tgz into /opt/splunk
-    src: /etc/ansible/playbooks/Splunk_UF_Install/roles/common/files/splunkforwarder-8.0.3-a6754d8441bf-Linux-x86_64.tgz 
-    dest: /opt/splunk/
-  become: yes
-  become_method: sudo
-  when:
-    - splunk_path_present.stat.exists == false
-    - ansible_facts['distribution'] == "CentOS"

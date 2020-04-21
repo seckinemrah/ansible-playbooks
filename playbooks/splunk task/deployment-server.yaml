@@ -1,0 +1,4 @@
+- name: Set Deployment Server
+  command: /opt/splunkforwarder/bin/splunk set deploy-poll -auth admin:{{uf_user_password}} https://18.132.5.165:8089
+  become: yes
+  become_method: sudo

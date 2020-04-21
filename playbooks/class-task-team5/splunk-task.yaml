@@ -1,0 +1,6 @@
+---
+- name: Install Linux Universal Forwarder
+  hosts: '{{ host }}'
+  vars:
+    splunk_working_directory: '/opt/splunk/'
+    splunk_uf_file_centos: 'splunkforwarder-8.0.3-a6754d8441bf-Linux-x86_64.tgz'
