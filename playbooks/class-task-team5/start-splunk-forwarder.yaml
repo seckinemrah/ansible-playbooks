@@ -1,4 +1,0 @@
-- name: Start Splunk Forwarder
-  command: /opt/splunkforwarder/bin/splunk start --accept-license
-  become: yes
-  become_method: sudo
